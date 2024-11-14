@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +30,16 @@ Route::get('/',[PageController::class, 'index'])->name('index');
 Route::get('conferences',[PageController::class, 'conferences'])->name('conferences');
 Route::get('articles',[PageController::class, 'articles'])->name('articles');
 Route::get('about',[PageController::class, 'about'])->name('about');
+
+
+//Maqolala uchun Marshrutlar
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('article_show');
+Route::get('/create_articles', [ArticleController::class, 'create_articles'])->name('create_articles');
+Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+
+//Ilmiy Amaliy Anjumanlar uchun Marshrutlar
+Route::get('/conferences', [ConferenceController::class, 'index'])->name('conferences');
+Route::get('/conferences/{conference}', [ConferenceController::class, 'show'])->name('conference_show');
+Route::get('/create_conferences', [ConferenceController::class, 'create_conferences'])->name('create_conferences');
+Route::post('/conferences', [ConferenceController::class, 'store'])->name('conferences.store');

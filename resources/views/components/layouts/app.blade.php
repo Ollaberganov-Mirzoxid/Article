@@ -20,18 +20,45 @@
 
         @auth
             <div class="auth">
-                <div class="main">
-                    <a href="">Maqola qo'shish</a>
+                <div class="profile-header" onclick="toggleDropdown()">
+                    <img src="{{ asset('images/user.png') }}" alt="Profil Rasmi" class="profile-pic">
+                    <h3 class="profile-name">Ollaberganov Mirzoxid</h3><i class="fas fa-right-arrow"></i>
+                </div>
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="#"><i class="fas fa-message"></i> Xabarlar</a>
+                    <a href="#"><i class="fas fa-user-pen"></i> Tahrirlash</a>
+                    <a href="{{ route('create_articles') }}"><i class="fas fa-plus"></i> Maqola Qo'shish</a>
+                    <a href="#"><i class="fas fa-newspaper"></i> Mening Maqolalarim</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button>Chiqish</button>
+                        <button><i class="fas fa-right-from-bracket"></i> Chiqish</button>
                     </form>
                 </div>
             </div>
+
+            <script>
+                function toggleDropdown() {
+                    var menu = document.getElementById("dropdownMenu");
+                    if (menu.style.display === "none" || menu.style.display === "") {
+                        menu.style.display = "block";
+                    } else {
+                        menu.style.display = "none";
+                    }
+                }
+
+                // Tashqarida bosilganda menyuni yopish
+                window.addEventListener("click", function(event) {
+                    var menu = document.getElementById("dropdownMenu");
+                    var profileHeader = document.querySelector(".profile-header");
+                    if (menu.style.display === "block" && !profileHeader.contains(event.target)) {
+                        menu.style.display = "none";
+                    }
+                });
+            </script>
         @else
             <div class="login">
                 <div class="main">
-                    <a href="{{ route('login') }}">Kirish</a>
+                    <a href="{{ route('login') }}"><img src="{{ asset('images/user.png') }}" alt=""></a>
                 </div>
             </div>
         @endauth
@@ -43,29 +70,29 @@
         <div class="container">
             <div class="row">
                 <div class="footer-col">
-                    <h4>kompaniya</h4>
+                    <h4>Sahifalar</h4>
                     <ul>
+                        <li><a href="#">Asosiy</a></li>
+                        <li><a href="#">Maqolalar</a></li>
                         <li><a href="#">Biz haqimizda</a></li>
-                        <li><a href="#">sheriklik dasturi</a></li>
-                        <li><a href="#">Maxfiylik siyosati</a></li>
-                        <li><a href="#">bizning xizmatlarimiz</a></li>
+                        <li><a href="#">Ilmiy-Amali Anjumanlar</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>yordam oling</h4>
                     <ul>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">buyurtma holati</a></li>
-                        <li><a href="#">to'lov imkoniyatlari</a></li>
+                        <li><a href="#">Maxfiylik siyosati</a></li>
+                        <li><a href="#">bizning xizmatlarimiz</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>onlayn do'kon</h4>
+                    <h4>Kategoriyalar</h4>
                     <ul>
-                        <li><a href="#">Soat</a></li>
-                        <li><a href="#">Kiyim</a></li>
-                        <li><a href="#">Sumka</a></li>
-                        <li><a href="#">Poyabzal</a></li>
+                        <li><a href="#">IT uchun</a></li>
+                        <li><a href="#">Sport uchun</a></li>
+                        <li><a href="#">Biznes uchun</a></li>
+                        <li><a href="#">Texnologiya uchun</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -81,5 +108,3 @@
         </div>
     </footer>
     <!-- Footer End -->
-
-    
