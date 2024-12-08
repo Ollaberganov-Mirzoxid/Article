@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConferenceController;
@@ -43,3 +44,14 @@ Route::get('/conferences', [ConferenceController::class, 'index'])->name('confer
 Route::get('/conferences/{conference}', [ConferenceController::class, 'show'])->name('conference_show');
 Route::get('/create_conferences', [ConferenceController::class, 'create_conferences'])->name('create_conferences');
 Route::post('/conferences', [ConferenceController::class, 'store'])->name('conferences.store');
+
+//Admin panel uchun marshrutlar
+// routes/web.php
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::post('/admin/articles/approve/{id}', [AdminController::class, 'approve'])->name('admin.articles.approve');
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/pending-articles', [AdminController::class, 'pendingArticles'])->name('admin.pendingArticles');
+    Route::post('/admin/approve-article/{id}', [AdminController::class, 'approveArticle'])->name('admin.approveArticle');
+});

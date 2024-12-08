@@ -10,7 +10,8 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::all();
+
+        $articles = Article::where('is_approved', true)->get(); // Faqat tasdiqlangan maqolalarni olish
 
         return view('pages.articles.articles')->with('articles', $articles);
     }
