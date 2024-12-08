@@ -38,11 +38,21 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->hasFile('photo')) {
+            $name_photo = $request->file('photo')->getClientOriginalName();
+            $path_photo = $request->file('photo')->storeAs('article-images', $name_photo);
+        }
+
+        if ($request->hasFile('file')) {
+            $name_file = $request->file('file')->getClientOriginalName();
+            $path_file = $request->file('file')->storeAs('article-files', $name_file);
+        }
+
         $article = Article::create([
             'title' => $request->title,
             'description' => $request->description,
-            'photo' => $request->photo ?? 'default_photo.jpg',
-            'file' => $request->file ?? 'default_photo.jpg',
+            'photo' => $path_photo ?? null,
+            'file' => $path_file ?? null,
         ]);
 
         return redirect()->route('articles');

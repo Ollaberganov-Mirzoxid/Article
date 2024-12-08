@@ -14,7 +14,7 @@
                 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
                 <script>
-                    var url = '{{ asset('storage/files/shablon.pdf') }}';
+                    var url = '{{ asset('storage/'.$article->file) }}';
                     var downloadButton = document.getElementById('download-btn');
                 
                     // PDF'ni yuklash
@@ -98,7 +98,7 @@
                 @foreach ($recent_articles as $article)
                     <div class="recent_articles_in">
                         <div class="recent_articles_url">
-                            <img src="{{ asset('images/img.jpg') }}" alt="">
+                            <img src="{{ asset('storage/'.$article->photo) }}" alt="">
                             <div class="recent_article_title">
                                 <a href="{{ route('article_show', ['article' => $article->id]) }}">
                                     <h1>{{ $article->title }}</h1>

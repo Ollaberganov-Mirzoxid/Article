@@ -51,7 +51,7 @@
             <div class="top-left-article-inside">
                 @foreach ($articles as $article)
                 <div class="card">
-                    <img src="{{ asset('images/img.jpg') }}" alt="Image Description">
+                    <img src="{{ asset('storage/'.$article->photo) }}" alt="Image Description">
                     <div class="overlay">
                         <h3>
                             <a href="{{ route('article_show', ['article' => $article->id]) }}">{{ $article->title }}</a>
@@ -69,7 +69,7 @@
             <div class="top-right-article-inside">
                 @foreach ($articles as $article)
                 <div class="card">
-                    <img src="{{ asset('images/img.jpg') }}" alt="Image Description">
+                    <img src="{{ asset('storage/'.$article->photo) }}" alt="Image Description">
                     <div class="overlay">
                         <h3>
                             <a href="{{ route('article_show', ['article' => $article->id]) }}">{{ $article->title }}</a>
@@ -87,7 +87,7 @@
             <div class="bottom-left-article-inside">
                 @foreach ($articles as $article)
                 <div class="card">
-                    <img src="{{ asset('images/img.jpg') }}" alt="Image Description">
+                    <img src="{{ asset('storage/'.$article->photo) }}" alt="Image Description">
                     <div class="overlay">
                         <h3>
                             <a href="{{ route('article_show', ['article' => $article->id]) }}">{{ $article->title }}</a>
@@ -105,7 +105,7 @@
             <div class="bottom-right-article-inside">
                 @foreach ($articles as $article)
                 <div class="card">
-                    <img src="{{ asset('images/img.jpg') }}" alt="Image Description">
+                    <img src="{{ asset('storage/'.$article->photo) }}" alt="Image Description">
                     <div class="overlay">
                         <h3>
                             <a href="{{ route('article_show', ['article' => $article->id]) }}">{{ $article->title }}</a>

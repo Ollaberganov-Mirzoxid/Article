@@ -15,7 +15,7 @@
             <div class="blog-grid">
                 @foreach ($articles as $article)
                     <div class="blog-card">
-                        <img src="{{ asset('images/img.jpg') }}" alt="Blog Image">
+                        <img src="{{ asset('storage/'.$article->photo) }}" alt="Blog Image">
                         <div class="blog-date">
                             <span>{{$article->created_at->format('j-M')}}</span> {{$article->created_at->format('Y')}}
                         </div>
